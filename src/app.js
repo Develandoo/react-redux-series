@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {render} from 'react-dom';
-import Input from './components/Input';
+import Post from './components/post';
 
 const App = () => {
 	return (
 		<div>
-			<Input/>
+			<Post/>
 		</div>
 	)
 }
