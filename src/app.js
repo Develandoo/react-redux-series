@@ -1,5 +1,26 @@
-import React, { Component } from '../node_modules/react';
-import {render} from 'react-dom';
-import Login from './login/login';
+import {createStore} from 'redux';
 
-render(<Login  />, document.getElementById('container'));
+let reducer = function(state, action){
+	if(action.type === 'INC'){
+		return state + 1;
+	}
+	if(action.type === 'DEC'){
+		return state - 1;
+	}
+	return state;
+}
+
+const store = createStore(reducer, 0);
+
+store.subscribe(() => {
+	console.log('store changed ', store.getState());
+});
+
+store.dispatch({type : 'INC', payload : 1});
+store.dispatch({type : 'INC', payload : 1});
+store.dispatch({type : 'INC', payload : 1});
+store.dispatch({type : 'INC', payload : 1});
+store.dispatch({type : 'INC', payload : 1});
+
+store.dispatch({type : 'DEC', payload : 1});
+store.dispatch({type : 'DEC', payload : 1});
